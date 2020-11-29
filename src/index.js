@@ -29,7 +29,7 @@ const createWindow = () => {
     (async () => {
         const server = await phpServer({
             port: 8061,
-            binary: rootPath + "/src/php",
+            binary: rootPath + "/src/phpwin/php.exe",
             base: rootPath + "/src/MovieFixer/public/",
             env: {}
         });
