@@ -1,14 +1,6 @@
 window.$ = window.jQuery = require('jquery');
 const {dialog} = require('electron').remote;
 
-const myNotification = new Notification('Title', {
-    body: 'Notification from the Renderer process'
-})
-
-myNotification.onclick = () => {
-    console.log('Notification clicked')
-}
-
 $(document).ready(function (){
     var currentWindow = require('electron').remote.getCurrentWindow();
     $('#close-window').click(function () {
@@ -39,7 +31,12 @@ $(document).ready(function (){
                 send_post_api( 'http://127.0.0.1:8061/api/fix_movies', {
                     'folder_path': result.filePaths[0]
                 }, function (result) {
-                    $('body').append( result );
+                    const myNotification = new Notification('Operation done :)', {
+                        body: 'Your movies and subtitles now are synced'
+                    });
+                    myNotification.onclick = () => {
+
+                    }
                 })
                 console.log( result.filePaths[0] );
             }
@@ -68,16 +65,17 @@ function send_api_request(
         },
     } )
         .done( function ( result ) {
+            done_call( result );
             if ( result.status ) {
                 if ( done_call !== null ) {
-                    done_call( result );
+
                 }
             } else {
             }
         } )
         .fail( function ( result ) {
+            fail_call( result );
             if ( fail_call !== null ) {
-                fail_call( result );
             } else {
             }
         } );
