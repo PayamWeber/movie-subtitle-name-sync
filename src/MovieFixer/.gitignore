@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/.sass-cache
 /storage/*.key
 /vendor
 .env
