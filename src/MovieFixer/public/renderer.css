@@ -1,0 +1,80 @@
+html {
+  margin: 0;
+  padding: 0; }
+  html body {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    user-select: none;
+    background: #1e2126;
+    color: #d4d4d4;
+    font-family: "Jost* Light"; }
+    html body button {
+      font-family: "Jost* Medium"; }
+    html body .topnav {
+      width: 100%;
+      height: 50px; }
+      html body .topnav .col {
+        padding-right: 0;
+        padding-left: 0; }
+      html body .topnav .drag-area {
+        width: calc(100% - 250px);
+        position: absolute;
+        height: 50px;
+        top: 3px;
+        left: 3px; }
+      html body .topnav .buttons {
+        position: absolute;
+        z-index: 99;
+        height: 50px;
+        right: 0;
+        top: 0;
+        text-align: right;
+        direction: rtl;
+        white-space: nowrap;
+        font-size: 0; }
+        html body .topnav .buttons button {
+          cursor: default;
+          font-size: 20px;
+          background: transparent;
+          color: white;
+          border: none;
+          width: 50px;
+          height: 50px;
+          text-align: center;
+          padding: 10px; }
+          html body .topnav .buttons button:focus, html body .topnav .buttons button:active {
+            border: none;
+            outline: none; }
+          html body .topnav .buttons button:hover {
+            background: rgba(255, 255, 255, 0.2); }
+        html body .topnav .buttons #close-window, html body .topnav .buttons #expand-window, html body .topnav .buttons #collapse-window {
+          position: relative;
+          width: 30px;
+          float: right; }
+          html body .topnav .buttons #close-window:before, html body .topnav .buttons #expand-window:before, html body .topnav .buttons #collapse-window:before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: calc( 50% - 7px );
+            left: 7px;
+            background-color: #fa5353;
+            border-radius: 50%;
+            transition: all 0.2s; }
+          html body .topnav .buttons #close-window:hover, html body .topnav .buttons #expand-window:hover, html body .topnav .buttons #collapse-window:hover {
+            background-color: transparent; }
+            html body .topnav .buttons #close-window:hover:before, html body .topnav .buttons #expand-window:hover:before, html body .topnav .buttons #collapse-window:hover:before {
+              transform-origin: center;
+              transform: scale(1.2); }
+        html body .topnav .buttons #close-window {
+          padding-right: 30px; }
+        html body .topnav .buttons #expand-window:before {
+          background-color: #fad453; }
+        html body .topnav .buttons #collapse-window:before {
+          background-color: #78ff67; }
+    html body .content-wrap {
+      padding-top: 50px;
+      padding-bottom: 50px; }
+
+/*# sourceMappingURL=renderer.css.map */

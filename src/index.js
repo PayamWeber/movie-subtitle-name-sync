@@ -1,21 +1,7 @@
-const {app, BrowserWindow} = require('electron');
-const path = require('path');
-const {exec} = require("child_process");
+const {app, webFrame, Input, remote, dialog} = require('electron');
+const {BrowserWindow} = require('electron');
 const phpServer = require('php-server');
-
-
-// const PHPServer = require('php-server-manager');
-//
-// const server = new PHPServer({
-//   php: "./src/php7.4-cgi",
-//   port: 3000,
-//   directives: {
-//     display_errors: 0,
-//     expose_php: 0
-//   }
-// });
-//
-// server.run();
+const rootPath = require('electron-root-path').rootPath;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -25,21 +11,31 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 720,
+        width: 700,
+        height: 350,
+        frame: false,
+        webPreferences: {
+            enableRemoteModule: true,
+            nodeIntegration: true
+        },
+        transparent: true,
+        minWidth: 700,
+        minHeight: 350,
     });
+
+    // dialog.showOpenDialog();
 
     // and load the index.html of the app.
     (async () => {
         const server = await phpServer({
             port: 8061,
-            binary: "./resources/app/src/php",
-            base: "./resources/app/src/",
+            binary: rootPath + "/src/php",
+            base: rootPath + "/src/MovieFixer/public/",
             env: {}
         });
         console.log(`PHP server running at ${server.url}`)
 
-        await mainWindow.loadURL(server.url + "/script.php");
+        await mainWindow.loadURL(server.url + "/");
     })();
     // mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
